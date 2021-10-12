@@ -1,0 +1,43 @@
+#--------
+#Dictionaries_Program
+#Graden_Rusk
+#October_12_2021
+#--------
+
+#--------Dictionaries & Lists--------#
+Names = []
+Grades = {}
+Grade = {}
+
+#--------Functions--------#
+
+def start():
+    print("Welcome to the grade recorder,")
+    try:
+        people = int(input("How many people are there?\n>>>" ))
+        names(people)
+    except:
+        print("numbers please.")
+        start()
+        
+def names(people):
+    print(f"Ok, There are {people} people.")
+    
+    number_of_people = people
+    
+    while number_of_people <= people:
+        if number_of_people == people:
+            name_2 = input(str("please print one name ata time.\n>>>" ))
+            Names.append(name_2)
+            number_of_people = number_of_people - 1
+        elif number_of_people >= 1:
+            name_3 = input(str("Who's next?\n>>>" ))
+            Names.append(name_3)
+            number_of_people = number_of_people - 1
+        else:
+            number_of_people = people + 1
+        
+    
+    
+start()
+print(' \n'.join(Names))
