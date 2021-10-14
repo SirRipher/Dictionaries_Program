@@ -27,17 +27,49 @@ def names(people):
     
     while number_of_people <= people:
         if number_of_people == people:
-            name_2 = input(str("please print one name ata time.\n>>>" ))
-            Names.append(name_2)
+            name = input(str("please print one name at a time.\n>>>" ))
+            Names.append(name)
             number_of_people = number_of_people - 1
         elif number_of_people >= 1:
-            name_3 = input(str("Who's next?\n>>>" ))
-            Names.append(name_3)
+            name = input(str("Who's next?\n>>>" ))
+            Names.append(name)
             number_of_people = number_of_people - 1
         else:
             number_of_people = people + 1
+    print("Are these the right names?")
+    print(' \n'.join(Names))
+    awnser = input(">>>" )
+    if awnser == 'y' or awnser == 'Yes' or awnser == 'yes':
+        print("Great!")
+        grades(people)
+    else:
+        print("Oops, sorry, let's try again shall we.")
+        Names.clear()
+        names(people)
         
-    
-    
+def grades(people):
+    print("Now that we have the people's names lets add their marks")
+    number_of_people = people
+    play = True
+    while play == True:
+        if number_of_people == people:
+            name_1 = input("What is their name?\n>>>" )
+            if name_1 in Names:
+                grade = float(input("what was their mark?\n>>>" ))
+                Grades[name_1] = (grade)
+                print(Grades)
+                number_of_people = people - 1
+             
+            else:
+                play = True
+        elif number_of_people >= 1:
+            name_1 = input("What is their name?\n>>>" )
+            if name_1 in Names:
+                grade = float(input("what was their mark?\n>>>" ))
+                Grades[name_1] = (grade)
+                print(Grades)
+            else:
+                play = True
+        else:
+            play = False
 start()
-print(' \n'.join(Names))
