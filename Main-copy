@@ -10,34 +10,89 @@ Grades = {}
 Grade = {}
 
 #--------Functions--------#
+def remove():
+    print("Who'm do you want to remove? this removes all their data/")
+    awnser = input(">>>" )
+    if awnser in Names:
+        print(f"{awnser} is being removed.")
+        Names.remove(awnser)
+        grade = Grades.pop(awnser)
+        print(f"Their {grade} percent is being removed.")
+        grade_2 = Grade.pop(awnser)
+        print(f"Their grade {grade_2} class is being removed.")
+        middle()
+    else:
+        remove()
+
 
 def start():
     print("Welcome to the grade recorder,")
     try:
         people = int(input("How many people are there?\n>>>" ))
-        names(people)
+        print(f"Ok, There are {people} people.")
+        number_of_people = people
+        while number_of_people <= people:
+            if number_of_people == people:
+                name = input(str("please print one name at a time.\n>>>" ))
+                Names.append(name)
+                grade = input("what was their mark?\n>>>" )
+                Grades[name] = (grade)
+                grade_2 = int(input("What is their class #?\n>>>" ))
+                Grade[name] = (grade_2)
+                number_of_people = number_of_people - 1
+            elif number_of_people >= 1:
+                name = input(str("Who's next?\n>>>" ))
+                Names.append(name)
+                grade = input("what was their mark?\n>>>" )
+                Grades[name] = (grade)
+                grade_2 = int(input("What is their class #?\n>>>" ))
+                Grade[name] = (grade_2)
+                number_of_people = number_of_people - 1
+            else:
+                number_of_people = people + 1
+        print("Are these the right names?")
+        print(' \n'.join(Names))
+        awnser = input(">>>" )
+        if awnser == 'y' or awnser == 'Yes' or awnser == 'yes':
+            print("Great!")
+            awnser_1 = len(Names)
+            print(f"There are {awnser_1} people now in the software.")
+        else:
+            Names.clear()
     except:
         print("numbers please.")
         start()
-        
-def names(people):
-    print(f"Ok, There are {people} people.")
+    print("Now you have all of your people and their data in the software.")
+    print("The students in your class consist of:")
+    print(' \n'.join(Names))
+    print("Then you also have their average in your class:")
+    for key, value in Grades.items():
+        print(key, ' : ', value)# thanks google
+    print("Then lastly you have the grade level they are in.")
+    for key, value in Grade.items():
+        print(key, ' : ', value)
+        middle()
     
-    number_of_people = people
-    
-    while number_of_people <= people:
-        if number_of_people == people:
-            name_2 = input(str("please print one name ata time.\n>>>" ))
-            Names.append(name_2)
-            number_of_people = number_of_people - 1
-        elif number_of_people >= 1:
-            name_3 = input(str("Who's next?\n>>>" ))
-            Names.append(name_3)
-            number_of_people = number_of_people - 1
+def middle():
+    print("You now have several options")
+    print("""1. remove a person from the list.
+2. find out the average of all the students.
+3. print everything.
+4. end all.""")
+    try:
+        change = int(input(">>>" ))
+        if change == 1:
+            remove()
+        elif change == 2:
+            average()
+        elif change == 3:
+            print_1()
         else:
-            number_of_people = people + 1
-        
-    
-    
+            End()
+    except:
+        middle()
+
+
 start()
-print(' \n'.join(Names))
+print(Names)  
+        
